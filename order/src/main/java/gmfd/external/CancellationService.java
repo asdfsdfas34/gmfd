@@ -10,8 +10,8 @@ import java.util.Date;
 
 @FeignClient(name="delivery", url=
         //"${api.delivery.url}")
-        //"http://delivery:8080")
-        "http://localhost:8082")
+        "http://delivery:8080")
+        //"http://localhost:8082")
 public interface CancellationService {
 
     @RequestMapping(method= RequestMethod.POST, path="/cancellations")

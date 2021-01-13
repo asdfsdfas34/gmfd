@@ -62,13 +62,3 @@ spring:
         event-out:
           destination: gmfd
           contentType: application/json
-
-api:
-  delivery:
-    url: http://delivery:8080
-  customer:
-    url: http://customer:8080
-  foodcatalog:
-    url: http://foodcatalog:8080
-  payment:
-    url: http://payment:8080
