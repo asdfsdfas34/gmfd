@@ -33,7 +33,18 @@ public class PolicyHandler{
 
             foodCatalog.setStock(foodCatalog.getStock() - ordered.getQty());
 
-            foodCatalogRepository.save(foodCatalog);
+            if( foodCatalog.getStock() < 0 ){
+                System.out.println("productOutOfStock 이벤트 발생");
+                CatalogOutofstock catalogOutofstock = new CatalogOutofstock();
+                catalogOutofstock.setProductId(ordered.getFoodcaltalogid());
+                catalogOutofstock.setOrderId(ordered.getId());
+                catalogOutofstock.publish();
+
+            }else{
+                foodCatalogRepository.save(foodCatalog);
+            }
+
+
 
         }
     }
@@ -49,7 +60,11 @@ public class PolicyHandler{
 
             FoodCatalog foodCatalog = optionalFoodCatalog.get();
 
-            foodCatalog.setStock(foodCatalog.getStock() + orderCancelled.getQty());
+            if(foodCatalog.getStock().equals(0)) {
+            }
+            else{
+                foodCatalog.setStock(foodCatalog.getStock() + orderCancelled.getQty());
+            }
 
             foodCatalogRepository.save(foodCatalog);
 

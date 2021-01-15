@@ -8,6 +8,7 @@ gmfd\PolicyHandler.class
 gmfd\FoodCatalogViewViewHandler.class
 gmfd\FoodCatalogController.class
 gmfd\Ordered.class
+gmfd\CatalogOutofstock.class
 gmfd\AbstractEvent.class
 gmfd\CatalogRegistered.class
 gmfd\FoodCatalogView.class
