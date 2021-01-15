@@ -5,7 +5,7 @@ public class Paid extends AbstractEvent {
 
     private Long id;
     private Integer amout;
-    private String status;
+    private String status = "Paid";
     private Long orderid;
 
     public Long getId() {

@@ -33,10 +33,17 @@ public class PolicyHandler{
             Pay pay = optionalPay.get();
 
             //pay.setOrderid(deliveryCanceled.getOrderId());
-            pay.setStatus("Delivery Canceled");
+            pay.setStatus("Order Canceled-payment");
 
             payRepository.save(pay);
             //
+
+            Cancelled cancelled = new Cancelled();
+            cancelled.setAmout(pay.getAmout());
+            cancelled.setId(pay.getId());
+            cancelled.setOrderid(pay.getOrderid());
+            cancelled.setStatus(pay.getStatus());
+            cancelled.publish();
 
 
         }

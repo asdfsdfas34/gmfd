@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Date;
 
-@FeignClient(name="foodcatalog", url=//"${api.foodCatalog.url}")
+@FeignClient(name="foodCatalog", url=//"${api.foodCatalog.url}")
         "http://foodcatalog:8080")
         //"http://localhost:8086")
 public interface FoodCatalogService {
 
-    @RequestMapping(method= RequestMethod.GET, path="/foodcatalogs")
+    @RequestMapping(method= RequestMethod.GET, path="/foodCatalogs")
     public void queryCatalog(@RequestBody FoodCatalog foodCatalog);
 
 }

@@ -1,10 +1,12 @@
 package gmfd;
 
 import javax.persistence.*;
+import javax.swing.text.html.Option;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 @Entity
@@ -19,14 +21,20 @@ public class Order {
     private Long foodcaltalogid;
     private Long customerid;
 
-    //@PrePersist
     @PostPersist
     public void onPostPersist() throws InterruptedException {
         Ordered ordered = new Ordered();
         BeanUtils.copyProperties(this, ordered);
-        ordered.publishAfterCommit();
 
-        TimeUnit.SECONDS.sleep(1);
+        ordered.setId(this.getId());
+        ordered.setCustomerid(this.getCustomerid());
+        ordered.setFoodcaltalogid(this.getFoodcaltalogid());
+        ordered.setQty(this.getQty());
+        ordered.setStatus("Ordered");
+
+        ordered.publish();
+
+        //TimeUnit.SECONDS.sleep(1);
 
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
@@ -69,7 +77,7 @@ public class Order {
 
 
         OrderApplication.applicationContext.getBean(gmfd.external.CancellationService.class)
-            .cancelShip(cancellation);
+                .cancelShip(cancellation);
 
 
     }

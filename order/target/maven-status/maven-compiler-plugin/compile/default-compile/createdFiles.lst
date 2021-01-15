@@ -15,6 +15,7 @@ gmfd\external\FoodCatalogService.class
 gmfd\external\Customer.class
 gmfd\external\Pay.class
 gmfd\Ordered.class
+gmfd\CatalogOutofstock.class
 gmfd\AbstractEvent.class
 gmfd\external\CustomerService.class
 gmfd\Shipped.class
