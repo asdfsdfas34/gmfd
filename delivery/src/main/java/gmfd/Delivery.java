@@ -18,6 +18,7 @@ public class Delivery {
     public void onPostPersist(){
         Shipped shipped = new Shipped();
         BeanUtils.copyProperties(this, shipped);
+        shipped.setStatus("Delivery Start");
         shipped.publishAfterCommit();
 
 

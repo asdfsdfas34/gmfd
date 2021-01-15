@@ -18,6 +18,7 @@ public class Cancellation {
     public void onPostPersist(){
         DeliveryCanceled deliveryCanceled = new DeliveryCanceled();
         BeanUtils.copyProperties(this, deliveryCanceled);
+        deliveryCanceled.setStatus("Cancelled-delivery");
         deliveryCanceled.publishAfterCommit();
 
 
