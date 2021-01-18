@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.Date;
 
 @FeignClient(name="customer", url=//"${api.customer.url}")
-        //"http://customer:8080")
-        "http://localhost:8083")
+        "http://customer:8080")
+        //"http://localhost:8083")
 public interface CustomerService {
 
     @RequestMapping(method= RequestMethod.GET, path="/customers")
