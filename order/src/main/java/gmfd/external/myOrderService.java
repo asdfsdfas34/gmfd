@@ -13,8 +13,8 @@ import java.util.List;
 
 //url="${api.payment.url}"
     @FeignClient(name="myorder", url=//"${api.payment.url}")
-            //"http://payment:8080")
-            "http://localhost:8083")
+            "http://payment:8080")
+            //"http://localhost:8083")
     public interface myOrderService  {
 
         @RequestMapping(method= RequestMethod.GET, path="/myorders")
