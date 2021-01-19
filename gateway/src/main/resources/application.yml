@@ -52,21 +52,21 @@ spring:
           predicates:
             - Path=/orders/** 
         - id: delivery
-          uri: http://delivery:8080
+          uri: ${delivery}
           predicates:
-            - Path=/deliveries/**/cancellations/** 
+            - Path=/deliveries/**,/cancellations/** 
         - id: customer
-          uri: http://customer:8080
+          uri: ${customerurl}
           predicates:
-            - Path=/customers/** /myOrders/**
+            - Path=/customers/**,/myOrders/**
         - id: payment
-          uri: http://payment:8080
+          uri: ${paymenturl}
           predicates:
             - Path=/pays/** 
         - id: foodcatalog
-          uri: http://foodCatalog:8080
+          uri: ${foodcatalogurl}
           predicates:
-            - Path=/foodCatalogs/** /foodCatalogViews/**
+            - Path=/foodCatalogs/**,/foodCatalogViews/**
       globalcors:
         corsConfigurations:
           '[/**]':
