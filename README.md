@@ -65,6 +65,11 @@ Siege 를 사용하여 100클라이언트로 20초간 부하를 발생시킨다.
 #Autoscale(HPA)
 autoscale 생성 및 siege 활용 부하 생성
 
+Deploy.yaml 파일 설정
+
+![hpa5](https://user-images.githubusercontent.com/41769626/105137874-5efe8700-5b37-11eb-9d39-ea9fe82275a4.PNG)
+
+
 ![hpa1](https://user-images.githubusercontent.com/41769626/105137057-1397a900-5b36-11eb-9119-014b2580510f.PNG)
 
 부하 생성으로 인한 Pod Scale-Out 확인
@@ -75,6 +80,16 @@ autoscale 생성 및 siege 활용 부하 생성
 
 
 #Zero-downtime deploy(Readiness Probe)
+Deploy.yaml 에 설정 적용 후 이미지 교체와 동시에 siege 테스트 수행
+kubectl set image deployment order order=final05crg.azurecr.io/mileages:v10C
+siege 
+siege -c100 -t20S -v 'http://mileage:8080/mileages'
+
+![readi2](https://user-images.githubusercontent.com/41769626/105137674-0929df00-5b37-11eb-83a4-d1eec543d47f.PNG)
+
+수행 결과 Avaliability 100%
+
+![readi](https://user-images.githubusercontent.com/41769626/105137803-442c1280-5b37-11eb-8cda-4dd716c0ea75.PNG)
 
 #ConfigMap/Presistence Volume
 
