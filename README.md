@@ -24,3 +24,25 @@
  ![event](https://user-images.githubusercontent.com/41769626/105119057-e08fee00-5b12-11eb-8370-cc81b3630b88.PNG)
 
 ## 구현 점검
+# Saga , Correlation , Req/Res 
+
+#Gateway
+
+#Circuit Breaker
+
+#Autoscale(HPA)
+
+#Zero-downtime deploy(Readiness Probe)
+
+#ConfigMap/Presistence Volume
+
+-- ConfigMap 적용
+
+
+-- PVC 사용하여 Pod 접근 후 Mount 된 Volume 확인
+![pvc](https://user-images.githubusercontent.com/41769626/105125453-bbee4300-5b1f-11eb-9be6-53d64068771a.PNG)
+
+#Polyglot
+
+#Self-Healing(Liveness Probe)
+
