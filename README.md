@@ -25,25 +25,31 @@
 
 ## 구현 점검
 
-# 주문 생성, 취소 , CQRS (req/res,correaltion-key,saga)
+#주문 생성, 취소 , CQRS (req/res,correaltion-key,saga)
 
 주문을 생성하고 결제가 완료되면 마일리지가 생성된다(동기,req/res)
+
 ![reqres-2](https://user-images.githubusercontent.com/41769626/105133623-6a9a7f80-5b30-11eb-8d83-1db0f6fb22c7.PNG)
 ![reqres](https://user-images.githubusercontent.com/41769626/105133651-77b76e80-5b30-11eb-9adf-2edfc8feac2c.PNG)
 
 결제가 취소되면 취소된 결제번호와 동일한 값을 가진 마일리지도 같이 취소된다(비동기,pub/sub)
+
 ![saga](https://user-images.githubusercontent.com/41769626/105133790-b3eacf00-5b30-11eb-8c5e-ab4008c590ed.PNG)
 ![saga2](https://user-images.githubusercontent.com/41769626/105133796-b51bfc00-5b30-11eb-8205-c5f4fd3e1208.PNG)
 
 
 결제가 완료/취소되면 마일리지의 MileageViews에 데이터가 같이 생성된다.(CQRS)
+
 ![cqrs](https://user-images.githubusercontent.com/41769626/105133840-c6650880-5b30-11eb-8921-38b7d063c2a5.PNG)
 
 
 #장애 격리
 결제 취소와 마일리지 취소는 비동기 통신으로 마일리지 취소 서비스가 죽은 상태에서도 정상 동작한다.
+
 ![장애차단](https://user-images.githubusercontent.com/41769626/105134333-9c601600-5b31-11eb-915e-68831709ba6f.PNG)
+
 다시 마일리지 서비스를 살릴경우 마일리지 취소 프로스세스가 진행된다.
+
 ![장애차단2](https://user-images.githubusercontent.com/41769626/105134460-d03b3b80-5b31-11eb-8e5a-3f08b6686ec5.PNG)
 
 
@@ -63,8 +69,11 @@
 
 -- ConfigMap 적용
 
+![configmap](https://user-images.githubusercontent.com/41769626/105134686-24deb680-5b32-11eb-8944-cde155518bc4.PNG)
+![cm](https://user-images.githubusercontent.com/41769626/105134884-6ec79c80-5b32-11eb-9b66-ce58a839aea8.PNG)
 
 -- PVC 사용하여 Pod 접근 후 Mount 된 Volume 확인
+
 ![pvc](https://user-images.githubusercontent.com/41769626/105125453-bbee4300-5b1f-11eb-9be6-53d64068771a.PNG)
 
 #Polyglot
