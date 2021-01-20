@@ -94,9 +94,10 @@ Deploy.yaml 파일 설정
 
 
 #Zero-downtime deploy(Readiness Probe)
+
 Deploy.yaml 에 설정 적용 후 이미지 교체와 동시에 siege 테스트 수행
+
 kubectl set image deployment order order=final05crg.azurecr.io/mileages:v10C
-siege 
 siege -c100 -t20S -v 'http://mileage:8080/mileages'
 
 ![readi2](https://user-images.githubusercontent.com/41769626/105137674-0929df00-5b37-11eb-83a4-d1eec543d47f.PNG)
@@ -119,4 +120,17 @@ siege -c100 -t20S -v 'http://mileage:8080/mileages'
 #Polyglot
 
 #Self-Healing(Liveness Probe)
+
+아래 조건으로 Deploy
+
+![liveness](https://user-images.githubusercontent.com/41769626/105143130-c8ce5f00-5b3e-11eb-93a2-11abceea70bd.PNG)
+
+cat /test 가 없으면 발생하기에 pod에 접근하여 test dir 생성
+
+![liveness](https://user-images.githubusercontent.com/41769626/105143418-2d89b980-5b3f-11eb-969b-9402585ee14c.PNG)
+![liveness3](https://user-images.githubusercontent.com/41769626/105143493-472b0100-5b3f-11eb-992d-e1a1cfc43ca4.PNG)
+
+생성 후 조건을 만족하여 더 이상 restart 되지 않음
+
+![liveness2](https://user-images.githubusercontent.com/41769626/105143524-4eeaa580-5b3f-11eb-9baf-a87c6ea7ada3.PNG)
 
