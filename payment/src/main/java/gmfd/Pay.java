@@ -23,12 +23,20 @@ public class Pay {
 
         Paid paid = new Paid();
         BeanUtils.copyProperties(this, paid);
+        paid.publish();
 
 
-        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+        gmfd.external.Mileage mileage = new gmfd.external.Mileage();
+        // mappings goes here
+        mileage.setPayId(this.getId());
+        mileage.setOrderId(this.getOrderid());
+        mileage.setCnt(this.getAmout());
+
+        PaymentApplication.applicationContext.getBean(gmfd.external.MileageService.class).mileage(mileage);
+
+       /* TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
             @Override
-            public void afterCommit( ) {
-                paid.publishAfterCommit();
+            public void beforeCommit(boolean readonly ) {
             }
         });
 
@@ -38,7 +46,7 @@ public class Pay {
 
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 
@@ -48,8 +56,9 @@ public class Pay {
         BeanUtils.copyProperties(this, cancelled);
         cancelled.publishAfterCommit();
 
-
-    }
+        //Following code causes dependency to external APIs
+        // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
+}
 
 
     public Long getId() {

@@ -15,4 +15,5 @@ public class PaymentApplication {
     public static void main(String[] args) {
         applicationContext = SpringApplication.run(PaymentApplication.class, args);
     }
+
 }
