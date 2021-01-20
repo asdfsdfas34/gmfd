@@ -110,7 +110,8 @@ siege -c100 -t20S -v 'http://mileage:8080/mileages'
 
 -- ConfigMap 적용
 
-![configmap](https://user-images.githubusercontent.com/41769626/105134686-24deb680-5b32-11eb-8944-cde155518bc4.PNG)
+![gate](https://user-images.githubusercontent.com/41769626/105149128-8c9efc80-5b46-11eb-95bc-6b47e3251642.PNG)
+
 ![cm](https://user-images.githubusercontent.com/41769626/105134884-6ec79c80-5b32-11eb-9b66-ce58a839aea8.PNG)
 
 -- PVC 사용하여 Pod 접근 후 Mount 된 Volume 확인
