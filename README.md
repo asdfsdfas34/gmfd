@@ -127,7 +127,6 @@ siege -c100 -t20S -v 'http://mileage:8080/mileages'
 
 cat /test 가 없으면 발생하기에 pod에 접근하여 test dir 생성
 
-![liveness](https://user-images.githubusercontent.com/41769626/105143418-2d89b980-5b3f-11eb-969b-9402585ee14c.PNG)
 ![liveness3](https://user-images.githubusercontent.com/41769626/105143493-472b0100-5b3f-11eb-992d-e1a1cfc43ca4.PNG)
 
 생성 후 조건을 만족하여 더 이상 restart 되지 않음
