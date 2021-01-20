@@ -55,12 +55,26 @@
 
 #Gateway
 생성된 External-IP 로 Gateway 통신을 하며 Gateway는 ConfigMap의 값을 사용한다.(운영에서 ConfigMap 서술)
+
 ![gateway](https://user-images.githubusercontent.com/41769626/105133937-ec8aa880-5b30-11eb-954e-181ca496ffc5.PNG)
 
 
 
 #Circuit Breaker
+
+Hystrix 를 사용한 Circuit Breaker
+설정
+
+![histrix](https://user-images.githubusercontent.com/41769626/105141871-1e097100-5b3d-11eb-957a-a07c9b0d8fa6.PNG)
+
+
 Siege 를 사용하여 100클라이언트로 20초간 부하를 발생시킨다.
+siege -c100 -t60S -r10 -v --content-type "application/json" 'http://payment:8080/pays POST {"payId":1}'
+
+부하가 발생된 요청은 500으로 빠지며 Availability 가 감소함을 확인한다.
+
+![cir1](https://user-images.githubusercontent.com/41769626/105141802-0c27ce00-5b3d-11eb-8d8f-03df20d32367.PNG)
+![cir](https://user-images.githubusercontent.com/41769626/105141805-0d58fb00-5b3d-11eb-9a67-fc6b6291febf.PNG)
 
 #Autoscale(HPA)
 autoscale 생성 및 siege 활용 부하 생성
