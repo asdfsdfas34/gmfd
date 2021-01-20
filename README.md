@@ -25,7 +25,6 @@
 
 1. 트랜잭션
     1. 결제가 되지 않은 주문건은 아예 거래가 성립되지 않아야 한다  Sync 호출
-    1. 배송이 완료된 주문은 취소할수 없다. Sync 호출
 1. 장애격리
     1. 결제시스템이 과중되면 사용자를 잠시동안 받지 않고 결제를 잠시후에 하도록 유도한다  Circuit breaker, fallback
 1. 성능
@@ -318,3 +317,4 @@ siege -c100 -t60S -v 'http://order:8080/orders'
 
 ![image](https://user-images.githubusercontent.com/62786155/105107324-3e184080-5afb-11eb-935f-a35d85be1624.png)
 
+#### 5. CofingMap 적용
