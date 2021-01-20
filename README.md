@@ -60,8 +60,19 @@
 
 
 #Circuit Breaker
+Siege 를 사용하여 100클라이언트로 20초간 부하를 발생시킨다.
 
 #Autoscale(HPA)
+autoscale 생성 및 siege 활용 부하 생성
+
+![hpa1](https://user-images.githubusercontent.com/41769626/105137057-1397a900-5b36-11eb-9119-014b2580510f.PNG)
+
+부하 생성으로 인한 Pod Scale-Out 확인
+
+![hpa](https://user-images.githubusercontent.com/41769626/105137145-2f9b4a80-5b36-11eb-8ddb-edc2b7b91381.PNG)
+![hpa2](https://user-images.githubusercontent.com/41769626/105137128-2ad69680-5b36-11eb-957d-c1a824e35522.PNG)
+![hpa3](https://user-images.githubusercontent.com/41769626/105137131-2c07c380-5b36-11eb-963f-f95fc524c331.PNG)
+
 
 #Zero-downtime deploy(Readiness Probe)
 
